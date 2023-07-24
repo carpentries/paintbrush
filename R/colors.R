@@ -1,3 +1,6 @@
+# Carpentries color Palette
+# Based on Carpentries Brand Identity https://docs.carpentries.org/topic_folders/communications/resources/brand_identity.html
+
 carp_colors <- c(
   black = "#383838",
   midnight = "#001483",
@@ -14,6 +17,21 @@ carp_colors <- c(
   dawn = "#FFD6D8",
   sunshine = "#FFE7A8"
 )
+
+# manual_pal() needs to be imported from scales
+#' Title
+#'
+#' @return
+#' @import scales
+#' @export
+#'
+#' @examples
+carp_pal <- function() {
+  f <- scales::manual_pal(carp_colors)
+  attr(f, "max_n") <- length(carp_colors)
+  f
+
+}
 
 # two_colors <- c(carp_fire, carp_lake)
 # three_colors <- c(carp_fire, carp_lake, carp_golden)

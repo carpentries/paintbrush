@@ -1,3 +1,10 @@
+#' Title
+#'
+#' @import ggplot2
+#' @return
+#' @export
+#'
+#' @examples
 theme_carp <- function() {
   theme_bw(base_size = 12) %+replace%
     theme(
