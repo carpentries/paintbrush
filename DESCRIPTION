@@ -1,10 +1,10 @@
 Package: carpstyle
-Title: What the Package Does (One Line, Title Case)
+Title: Carpentries Assessment Tools 
 Version: 0.0.0.9000
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
+    person("Kelly", "Barnes", , "kbarnes@carpentries.org", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0001-5797-5181"))
+Description: Provides tools to facilitate Carpentries assessment work including tools to fetch Carpentries data and apply Carpentries branding to visualisations.
 License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
     license
 Encoding: UTF-8
