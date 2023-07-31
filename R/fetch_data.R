@@ -3,7 +3,7 @@
 #' @param query_id
 #'
 #' @return
-#' @import utils
+#' @importFrom utils read.csv
 #' @export
 #'
 #' @examples
