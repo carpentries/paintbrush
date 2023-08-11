@@ -104,14 +104,14 @@ scale_fill_carpentries <-
                      carpentries_pal(discrete = TRUE),
                      ...)
     } else {
-      continous_scale(
+      scale_color_gradientn(
         ...,
         colors = carpentries_pal(discrete = FALSE),
         values = NULL,
         space = "Lab",
         na.value = "grey50",
         guide = "colourbar",
-        aesthetics = "fill"
+        aesthetics = "color"
       )
     }
   }
@@ -146,7 +146,7 @@ scale_fill_carpentries <-
 #' theme_carpentries()
 #'
 #' p_color_continuous
-#'
+
 #'
 scale_color_carpentries <-
   function(palette = "carpentries_pal",
