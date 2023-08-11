@@ -147,7 +147,6 @@ scale_fill_carpentries <-
 #'
 #' p_color_continuous
 #'
-#' @rdname colors
 #'
 scale_color_carpentries <-
   function(palette = "carpentries_pal",
