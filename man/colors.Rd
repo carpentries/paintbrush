@@ -48,7 +48,6 @@ my_palette(3)
 
 library(ggplot2)
 
-Borrowed from the pages of ggplot2
 p <- ggplot(mtcars, aes(wt, mpg))
 p + geom_point(size = 4, aes(colour = factor(cyl))) +
     scale_color_carpentries(discrete = TRUE) +

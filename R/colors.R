@@ -67,7 +67,6 @@ carpentries_pal <- function(n = 100, discrete = TRUE) {
 #' @examples
 #' library(ggplot2)
 #'
-#' Borrowed from the pages of ggplot2
 #' p <- ggplot(mtcars, aes(wt, mpg))
 #' p + geom_point(size = 4, aes(colour = factor(cyl))) +
 #'     scale_color_carpentries(discrete = TRUE) +
