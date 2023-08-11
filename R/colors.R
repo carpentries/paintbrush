@@ -18,12 +18,18 @@ carpentries_colors <- c(
   sunshine = "#FFE7A8"
 )
 
+# continuous_palette <- colorRampPalette(carpentries_colors)
+# n_colors <- 100
+# continuous_colors <- continuous_palette(n_colors)
+# barplot(rep(1, n_colors), col = continuous_colors, border = NA, space = 0)
+
 #' Carpentries color palette (discrete)
 #'
 #' This palette includes 14 colors.
 #'
 #' @return a function that generates a palette of up to 14 colors.
 #' @import scales
+#' @rdname colors
 #' @export
 #'
 #' @examples
@@ -31,35 +37,144 @@ carpentries_colors <- c(
 #' my_palette <- carpentries_pal()
 #' my_palette(3)
 #'
-carpentries_pal <- function() {
-  f <- scales::manual_pal(carpentries_colors)
-  attr(f, "max_n") <- length(carpentries_colors)
-  f
+carpentries_pal <- function(n = 100, discrete = TRUE) {
+  if (discrete) {
+    f <- scales::manual_pal(carpentries_colors)
+    attr(f, "max_n") <- length(carpentries_colors)
+    f
+  } else {
+    continuous_palette <- colorRampPalette(carpentries_colors)
+    continuous_colors <- continuous_palette(n)
+    scales::manual_pal(continuous_colors)
+  }
+
+
+
 
 }
 
-#' Carpentries color scales
+#' Create a color scale for filling based on the Carpentries palette
 #'
-#' @param ...
+#' @param palette A string specifying the palette to use (default is "carpentries_pal").
+#' @param alpha Alpha value for transparency (default is 1).
+#' @param discrete Logical indicating if the scale should be discrete (default is FALSE).
+#' @param ... Additional arguments passed to underlying functions.
+#' @return A ggplot2 scale for filling
+#' @rdname colors
 #'
-#' @return
 #' @export
 #'
 #' @examples
-scale_fill_carp <- function(...) {
-  discrete_scale("fill", "carpentries", carpentries_pal(), ...)
-}
+#' library(ggplot2)
+#'
+#' Borrowed from the pages of ggplot2
+#' p <- ggplot(mtcars, aes(wt, mpg))
+#' p + geom_point(size = 4, aes(colour = factor(cyl))) +
+#'     scale_color_carpentries(discrete = TRUE) +
+#'     theme_bw()
+#'
+#' data <- data.frame(
+#' x = 1:10,
+#' y = seq(1, 5, length.out = 10),
+#' category = factor(rep(1:2, each = 5)))
+#'
+#' p_fill_discrete <-  ggplot(data, aes(x, y, fill = category)) +
+#' geom_bar(stat = 'identity') +
+#' scale_fill_carpentries(discrete = TRUE) +
+#' theme_carpentries()
+#'
+#' p_fill_discrete
+#'
+#' p_fill_continuous <-  ggplot(data, aes(x, y, fill = category)) +
+#' geom_bar(stat = 'identity') +
+#' scale_fill_carpentries(discrete = FALSE) +
+#' theme_carpentries()
+#'
+#' p_fill_continuous
+#'
+#'
+scale_fill_carpentries <-
+  function(palette = "carpentries_pal",
+           alpha = 1,
+           discrete = FALSE,
+           ...) {
+    palette <- match.arg(palette)
+    if (discrete) {
+      discrete_scale("fill",
+                     "carpentries",
+                     carpentries_pal(discrete = TRUE),
+                     ...)
+    } else {
+      continous_scale(
+        ...,
+        colors = carpentries_pal(discrete = FALSE),
+        values = NULL,
+        space = "Lab",
+        na.value = "grey50",
+        guide = "colourbar",
+        aesthetics = "fill"
+      )
+    }
+  }
 
+#' Create a color scale for color based on the Carpentries palette
+#'
+#' @param palette A string specifying the palette to use (default is "carpentries_pal").
+#' @param alpha Alpha value for transparency (default is 1).
+#' @param discrete Logical indicating if the scale should be discrete (default is FALSE).
+#' @param ... Additional arguments passed to underlying functions.
+#' @return A ggplot2 scale for filling
+#' @rdname colors
+#'
 #' @export
-#' @rdname carpentries_palette
-scale_color_carpentries <- function(...) {
-  discrete_scale("colour", "carpentries", carpentries_pal(), ...)
-}
+#'
+#' @examples
+#' data <- data.frame(
+#' x = 1:10,
+#' y = seq(1, 5, length.out = 10),
+#' category = factor(rep(1:2, each = 5)))
+#'
+#' p_color_discrete <- ggplot(data, aes(x, y, color = category)) +
+#' geom_line() +
+#' scale_color_carpentries(discrete = TRUE) +
+#' theme_carpentries()
+#'
+#' p_color_discrete
+#'
+#'p_color_continuous <- ggplot(data, aes(x, y, color = category)) +
+#' geom_line() +
+#' scale_color_carpentries(discrete = FALSE) +
+#' theme_carpentries()
+#'
+#' p_color_continuous
+#'
+#' @rdname colors
+#'
+scale_color_carpentries <-
+  function(palette = "carpentries_pal",
+           alpha = 1,
+           discrete = FALSE,
+           ...) {
+    palette <- match.arg(palette)
+    if (discrete) {
+      discrete_scale("colour",
+                     "carpentries",
+                     carpentries_pal(discrete = TRUE),
+                     ...)
+    } else {
+      scale_color_gradientn(
+        ...,
+        colors = carpentries_pal(discrete = FALSE),
+        values = NULL,
+        space = "Lab",
+        na.value = "grey50",
+        guide = "colourbar",
+        aesthetics = "color"
+      )
+    }
+  }
 
-#' @export
-#' @rdname carpentries_palette
 
-scale_color_carpentries <- scale_color_carpentries
 
 # two_colors <- c(carp_fire, carp_lake)
 # three_colors <- c(carp_fire, carp_lake, carp_golden)
