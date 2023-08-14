@@ -2,12 +2,12 @@
 # Based on Carpentries Brand Identity https://docs.carpentries.org/topic_folders/communications/resources/brand_identity.html
 
 carpentries_colors <- c(
-  black = "#383838",
   midnight = "#001483",
   fire = "#FF4955",
   golden = "#FFC700",
-  buttercup = "#FFF7F1",
+  black = "#383838",
   lake = "#0044d7",
+  buttercup = "#FFF7F1",
   pond = "#719eff",
   sky = "#E6F1FF",
   dew = "#F5F8FF",
@@ -18,10 +18,6 @@ carpentries_colors <- c(
   sunshine = "#FFE7A8"
 )
 
-# continuous_palette <- colorRampPalette(carpentries_colors)
-# n_colors <- 100
-# continuous_colors <- continuous_palette(n_colors)
-# barplot(rep(1, n_colors), col = continuous_colors, border = NA, space = 0)
 
 #' Carpentries color palette (discrete)
 #'
@@ -70,7 +66,7 @@ carpentries_pal <- function(n = 100, discrete = TRUE) {
 #' p <- ggplot(mtcars, aes(wt, mpg))
 #' p + geom_point(size = 4, aes(colour = factor(cyl))) +
 #'     scale_color_carpentries(discrete = TRUE) +
-#'     theme_bw()
+#'     theme_carpentries()
 #'
 #' data <- data.frame(
 #' x = 1:10,
@@ -82,14 +78,14 @@ carpentries_pal <- function(n = 100, discrete = TRUE) {
 #' scale_fill_carpentries(discrete = TRUE) +
 #' theme_carpentries()
 #'
-#' p_fill_discrete
+#' print(p_fill_discrete)
 #'
 #' p_fill_continuous <-  ggplot(data, aes(x, y, fill = category)) +
 #' geom_bar(stat = 'identity') +
 #' scale_fill_carpentries(discrete = FALSE) +
 #' theme_carpentries()
 #'
-#' p_fill_continuous
+#' print(p_fill_continuous)
 #'
 #'
 scale_fill_carpentries <-
@@ -138,14 +134,14 @@ scale_fill_carpentries <-
 #' scale_color_carpentries(discrete = TRUE) +
 #' theme_carpentries()
 #'
-#' p_color_discrete
+#' print(p_color_discrete)
 #'
 #'p_color_continuous <- ggplot(data, aes(x, y, color = category)) +
 #' geom_line() +
 #' scale_color_carpentries(discrete = FALSE) +
 #' theme_carpentries()
 #'
-#' p_color_continuous
+#' print(p_color_continuous)
 
 #'
 scale_color_carpentries <-
@@ -173,8 +169,3 @@ scale_color_carpentries <-
   }
 
 
-
-# two_colors <- c(carp_fire, carp_lake)
-# three_colors <- c(carp_fire, carp_lake, carp_golden)
-# four_colors <- c(carp_fire, carp_lake, carp_golden, carp_midnight)
-# five_colors <- c(carp_fire, carp_lake, carp_golden, carp_midnight, carp_black)

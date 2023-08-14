@@ -51,7 +51,7 @@ library(ggplot2)
 p <- ggplot(mtcars, aes(wt, mpg))
 p + geom_point(size = 4, aes(colour = factor(cyl))) +
     scale_color_carpentries(discrete = TRUE) +
-    theme_bw()
+    theme_carpentries()
 
 data <- data.frame(
 x = 1:10,
@@ -63,14 +63,14 @@ geom_bar(stat = 'identity') +
 scale_fill_carpentries(discrete = TRUE) +
 theme_carpentries()
 
-p_fill_discrete
+print(p_fill_discrete)
 
 p_fill_continuous <-  ggplot(data, aes(x, y, fill = category)) +
 geom_bar(stat = 'identity') +
 scale_fill_carpentries(discrete = FALSE) +
 theme_carpentries()
 
-p_fill_continuous
+print(p_fill_continuous)
 
 
 data <- data.frame(
@@ -83,13 +83,13 @@ geom_line() +
 scale_color_carpentries(discrete = TRUE) +
 theme_carpentries()
 
-p_color_discrete
+print(p_color_discrete)
 
 p_color_continuous <- ggplot(data, aes(x, y, color = category)) +
 geom_line() +
 scale_color_carpentries(discrete = FALSE) +
 theme_carpentries()
 
-p_color_continuous
+print(p_color_continuous)
 
 }
