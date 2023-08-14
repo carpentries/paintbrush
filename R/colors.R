@@ -33,20 +33,13 @@ carpentries_colors <- c(
 #' my_palette <- carpentries_pal()
 #' my_palette(3)
 #'
-carpentries_pal <- function(n = 100, discrete = TRUE) {
+carpentries_pal <- function(discrete = TRUE) {
   if (discrete) {
     f <- scales::manual_pal(carpentries_colors)
-    attr(f, "max_n") <- length(carpentries_colors)
-    f
   } else {
-    continuous_palette <- colorRampPalette(carpentries_colors)
-    continuous_colors <- continuous_palette(n)
-    scales::manual_pal(continuous_colors)
+    f <- colorRampPalette(carpentries_colors)
   }
-
-
-
-
+  return(f)
 }
 
 #' Create a color scale for filling based on the Carpentries palette
