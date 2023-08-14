@@ -24,4 +24,3 @@ test_that("continuous color palettes return expected colors", {
   expect_contains(dp(15), unname(carpentries_colors[c(1, 14)]))
   expect_contains(dp(100), unname(carpentries_colors[c(1, 14)]))
 })
-# Test continuous palette - we expect a vector starting with the first color and ending with the last color
