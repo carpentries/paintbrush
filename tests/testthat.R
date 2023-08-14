@@ -7,6 +7,6 @@
 # * https://testthat.r-lib.org/articles/special-files.html
 
 library(testthat)
-library(carpstyle)
+library(paintbrush)
 
-test_check("carpstyle")
+test_check("paintbrush")
