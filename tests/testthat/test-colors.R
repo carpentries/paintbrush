@@ -11,9 +11,11 @@ test_that("discrete color palettes return expected colors", {
   # I expect the dp to return a vector of the first three
   # colors of carpentries_colors
   expect_equal(dp(3), unname(carpentries_colors[1:3]))
-  expect_equal(dp(14), unname(carpentries_colors[1:14]))
-  expect_warning(dp(15))
-  expect_warning(dp(100))
+  expect_equal(dp(14), unname(carpentries_colors))
+  expect_warning(x15 <- dp(15), "have supplied 15")
+  expect_equal(x15, unname(c(carpentries_colors, NA)))
+  expect_warning(x100 <- dp(100), "have supplied 100")
+  expect_equal(x100, unname(c(carpentries_colors, rep(NA, 86))))
 })
 
 test_that("continuous color palettes return expected colors", {
