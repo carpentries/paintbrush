@@ -73,7 +73,7 @@ carpentries_pal <- function(discrete = TRUE) {
 #'
 #' print(p_fill_discrete)
 #'
-#' p_fill_continuous <-  ggplot(data, aes(x, y, fill = category)) +
+#' p_fill_continuous <-  ggplot(data, aes(x, y, fill = y)) +
 #' geom_bar(stat = 'identity') +
 #' scale_fill_carpentries(discrete = FALSE) +
 #' theme_carpentries()
@@ -88,19 +88,19 @@ scale_fill_carpentries <-
            ...) {
     palette <- match.arg(palette)
     if (discrete) {
-      discrete_scale("fill",
-                     "carpentries",
-                     carpentries_pal(discrete = TRUE),
+      discrete_scale(aesthetics = "fill",
+                     scale_name = "carpentries",
+                     palette = carpentries_pal(discrete = TRUE),
                      ...)
     } else {
-      scale_color_gradientn(
+      scale_fill_gradientn(
         ...,
-        colors = carpentries_pal(discrete = FALSE),
+        colors = carpentries_colors,
         values = NULL,
         space = "Lab",
         na.value = "grey50",
         guide = "colourbar",
-        aesthetics = "color"
+        aesthetics = "fill"
       )
     }
   }
