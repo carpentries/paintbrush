@@ -6,7 +6,7 @@
 \alias{scale_color_carpentries}
 \title{Carpentries color palette (discrete)}
 \usage{
-carpentries_pal(n = 100, discrete = TRUE)
+carpentries_pal(discrete = TRUE)
 
 scale_fill_carpentries(
   palette = "carpentries_pal",
@@ -65,7 +65,7 @@ theme_carpentries()
 
 print(p_fill_discrete)
 
-p_fill_continuous <-  ggplot(data, aes(x, y, fill = category)) +
+p_fill_continuous <-  ggplot(data, aes(x, y, fill = y)) +
 geom_bar(stat = 'identity') +
 scale_fill_carpentries(discrete = FALSE) +
 theme_carpentries()

@@ -1,6 +1,10 @@
 # Carpentries color Palette
 # Based on Carpentries Brand Identity https://docs.carpentries.org/topic_folders/communications/resources/brand_identity.html
 
+#' A Vector containing the color palette for The Carpentries
+#'
+#' @name carpentries_colors
+#' @export
 carpentries_colors <- c(
   midnight = "#001483",
   fire = "#FF4955",
